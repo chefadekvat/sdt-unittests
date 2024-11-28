@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  test:
+  test-ubuntu:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,3 +21,19 @@ jobs:
       - name: Run unit tests
         run: |
           python3 -m unittest rectangle.py square.py triangle.py circle.py
+  test-windows:
+      runs-on: windows-latest
+  
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
+  
+        - name: Set up Python
+          uses: actions/setup-python@v2
+          with:
+            python-version: '3.12'
+  
+        - name: Run unit tests
+          run: |
+            python3 -m unittest rectangle.py square.py triangle.py circle.py
+
